@@ -1,13 +1,15 @@
 # Dados Públicos do CNPJ da Receita Federal
 
-**Valor:** R$ 249,00 (pagamento único)
+**Valor:** R$ 249,00 (pagamento único via pix)
 
 **Inclui:**
 - 📄 **Mais de 5.000 planilhas individuais** (.xlsx), uma para cada município brasileiro, organizadas por UF e cidade
 - 🗃️ **Banco de Dados completo em `SQLite3`**, com mais de **30 GB de dados estruturados**
 
 Fale conosco por e-mail:  
-📩 cnpjbrazil.github@gmail.com
+📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
+
+[🔽 Ir direto para o FAQ](#-perguntas-frequentes--cnpj-brazil)
 
 ### 📂 Prévia dos Dados Disponíveis
 
@@ -198,3 +200,97 @@ Este repositório oferece de forma gratuita dados completos de CNPJs e dados emp
 ## Como Adquirir
 
 Para adquirir os dados completo, entre em contato conosco pelo [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com) para mais informações. Simplifique suas análises e desenvolvimento de aplicações com dados empresariais completos e estruturados em `SQLITE3`.
+
+
+# ❓ Perguntas Frequentes – CNPJ Brazil
+
+## 1. O que está incluído na compra do pacote de dados do CNPJ Brazil?
+Você recebe **mais de 5.000 planilhas em formato Excel** (uma para cada município brasileiro), além de um **banco de dados completo em SQLite3** com mais de **30 GB de informações** estruturadas sobre empresas e sócios de todo o país.
+
+---
+
+## 2. Os dados são oficiais e atualizados?
+Sim. Todos os dados são **públicos e extraídos diretamente da Receita Federal**, com estrutura baseada no layout oficial da base de dados do CNPJ.
+
+---
+
+## 3. Como posso visualizar os dados? Preciso de software especial?
+As planilhas estão no formato `.xlsx`, compatíveis com **Excel, LibreOffice ou Google Sheets**.  
+O banco de dados `.sqlite3` pode ser aberto com o **DB Browser for SQLite**, software gratuito e leve.
+
+---
+
+## 4. Que tipo de informações estão disponíveis sobre as empresas?
+Você terá acesso a dados como:
+
+- CNPJ
+- Razão Social e Nome Fantasia
+- CNAEs principal e secundários
+- Endereço, telefone, e-mail
+- Situação cadastral
+- Natureza jurídica e capital social
+- Porte da empresa
+- Dados do Simples Nacional
+
+---
+
+## 5. Também estão disponíveis informações dos sócios?
+Sim. O banco inclui o **quadro societário completo**, com:
+
+- Nome do sócio
+- Qualificação
+- Data de entrada
+- CPF parcialmente oculto (conforme a LGPD)
+- Representante legal (quando aplicável)
+- Faixa etária
+
+---
+
+## 6. Para que tipo de uso esse banco de dados é útil?
+Ideal para:
+
+- **Prospecção de clientes**
+- **Pesquisa de mercado**
+- **Validação de fornecedores**
+- **Desenvolvimento de CRMs ou sistemas de BI**
+- **Estudos econômicos regionais**
+
+---
+
+## 7. Posso testar os dados antes de comprar?
+Sim! Fornecemos uma **prévia gratuita** com:
+
+- Planilhas de amostra (.xlsx) por cidade
+- Banco de dados de demonstração em SQLite
+- Amostras reais e atualizadas
+
+🔗 [Clique aqui para acessar a prévia no Google Drive]([https://exemplo-do-link.com](https://drive.google.com/drive/folders/1xdLWjr5_3S_8WsUXakSP4tAzkgIjFtMK))
+
+---
+
+## 8. Qual é o valor e como é feito o pagamento?
+O valor é **R$ 249,00** em **pagamento único**.  
+Para adquirir, entre em contato por e-mail:  
+📩 **cnpjbrazil.github@gmail.com**
+
+---
+
+## 9. Quais as vantagens de usar o banco de dados em SQLite3?
+- Acesso rápido e eficiente
+- Consultas SQL avançadas
+- Estrutura única e consolidada
+- Ideal para integração com sistemas e ferramentas de análise
+
+---
+
+## 10. É possível filtrar os dados por cidade, estado ou setor de atividade?
+Sim! Os dados são organizados e podem ser filtrados facilmente por:
+
+- Município ou UF
+- CNAE (atividade econômica)
+- Situação cadastral
+- Porte da empresa
+- E outros campos
+
+---
+
