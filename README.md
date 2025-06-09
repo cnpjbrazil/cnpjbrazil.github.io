@@ -264,7 +264,7 @@ Sim! Fornecemos uma **prévia gratuita** com:
 - Banco de dados de demonstração em SQLite
 - Amostras reais e atualizadas
 
-🔗 [Clique aqui para acessar a prévia no Google Drive]([https://exemplo-do-link.com](https://drive.google.com/drive/folders/1xdLWjr5_3S_8WsUXakSP4tAzkgIjFtMK))
+🔗 [Clique aqui para acessar a prévia no Google Drive](https://drive.google.com/drive/folders/1xdLWjr5_3S_8WsUXakSP4tAzkgIjFtMK)
 
 ---
 
