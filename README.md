@@ -271,7 +271,7 @@ Sim! Fornecemos uma **prévia gratuita** com:
 ## 8. Qual é o valor e como é feito o pagamento?
 O valor é **R$ 249,00** em **pagamento único**.  
 Para adquirir, entre em contato por e-mail:  
-📩 **cnpjbrazil.github@gmail.com**
+📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
 
 ---
 
