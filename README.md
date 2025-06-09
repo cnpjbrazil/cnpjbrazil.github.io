@@ -1,4 +1,4 @@
-# Dados Públicos do CNPJ da Receita Federal
+# CNPJ Brazil - Dados Públicos de CNPJ da Receita Federal
 
 **Valor:** R$ 249,00 (pagamento único via pix)
 
