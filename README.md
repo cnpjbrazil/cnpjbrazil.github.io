@@ -6,11 +6,12 @@
 - 📄 **Mais de 5.000 planilhas individuais** (.xlsx), uma para cada município brasileiro, organizadas por UF
 - 🗃️ **Banco de Dados completo em `SQLite3`**, com mais de **30 GB de dados estruturados**
 
+**Ainda com dúvidas?**
+- 🗄️ **Baixe** um Banco de Dados para teste [AQUI](AC.zip), contendo informações de empresas do ACRE.
+- 👓 **Não sabe manipular Banco de Dados SQLite3?** Veja [AQUI](TUTORIAL.pdf) um guia rápido e fácil. 
+
 Fale conosco por e-mail:  
 📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
-
-Como usar Banco SQLite? [Tutorial Aqui!](TUTORIAL.pdf)
-
 
 [🔽 Ir direto para Perguntas Frequentes](#-perguntas-frequentes--cnpj-brazil)
 
