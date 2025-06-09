@@ -9,6 +9,9 @@
 Fale conosco por e-mail:  
 📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
 
+Como usar Banco SQLite? [Tutorial Aqui!](TUTORIAL.pdf)
+
+
 [🔽 Ir direto para Perguntas Frequentes](#-perguntas-frequentes--cnpj-brazil)
 
 ### 📂 Prévia dos Dados Disponíveis
