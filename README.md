@@ -3,13 +3,13 @@
 **Valor:** R$ 249,00 (pagamento único via pix)
 
 **Inclui:**
-- 📄 **Mais de 5.000 planilhas individuais** (.xlsx), uma para cada município brasileiro, organizadas por UF e cidade
+- 📄 **Mais de 5.000 planilhas individuais** (.xlsx), uma para cada município brasileiro, organizadas por UF
 - 🗃️ **Banco de Dados completo em `SQLite3`**, com mais de **30 GB de dados estruturados**
 
 Fale conosco por e-mail:  
 📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
 
-[🔽 Ir direto para o FAQ](#-perguntas-frequentes--cnpj-brazil)
+[🔽 Ir direto para Perguntas Frequentes](#-perguntas-frequentes--cnpj-brazil)
 
 ### 📂 Prévia dos Dados Disponíveis
 
