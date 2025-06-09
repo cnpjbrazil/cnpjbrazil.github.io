@@ -8,7 +8,8 @@
 
 **Ainda com dúvidas?**
 - 🗄️ **Baixe** um Banco de Dados para teste [AQUI](AC.zip), contendo informações de empresas do ACRE.
-- 👓 **Não sabe manipular Banco de Dados SQLite3?** Veja [AQUI](TUTORIAL.pdf) um guia rápido e fácil. 
+- 👓 **Não sabe manipular Banco de Dados SQLite3?** Veja [AQUI](TUTORIAL.pdf) um guia rápido e fácil.
+- 🔍 **Baixe uma prévia** das planilhas no [Google Drive](https://drive.google.com/drive/folders/1xdLWjr5_3S_8WsUXakSP4tAzkgIjFtMK)!
 
 Fale conosco por e-mail:  
 📩 [cnpjbrazil.github@gmail.com](mailto:cnpjbrazil.github@gmail.com)
