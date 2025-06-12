@@ -1,5 +1,7 @@
 # CNPJ Brazil - Dados Públicos de CNPJ da Receita Federal
 
+[![WhatsApp](https://web.whatsapp.com/favicon-64x64.ico)](https://wa.me/5553991675790) Whatsapp: [**(53) 9 9167-5790**](https://wa.me/5553991675790)
+
 **Valor:** R$ 249,00 (pagamento único via pix)
 
 **Inclui:**
