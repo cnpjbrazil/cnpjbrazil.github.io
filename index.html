@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CNPJ Brazil</title>
+  <meta
+    name="description"
+    content="CNPJ Brazil: software local para consultar dados de CNPJ offline, pesquisar estabelecimentos e sócios, exportar Excel e gerar relatórios."
+  />
+  <style>
+    :root {
+      --ink: #17211b;
+      --muted: #5c6a61;
+      --paper: #fffaf0;
+      --cream: #fff8e8;
+      --mist: #edf7ee;
+      --leaf: #1f7a45;
+      --leaf-dark: #105a31;
+      --leaf-soft: rgba(31, 122, 69, 0.12);
+      --sun: #f4b942;
+      --clay: #d97845;
+      --line: rgba(23, 33, 27, 0.14);
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(16, 90, 49, 0.16);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(244, 185, 66, 0.28), transparent 28rem),
+        radial-gradient(circle at 82% 7%, rgba(31, 122, 69, 0.18), transparent 34rem),
+        linear-gradient(135deg, #fffaf0 0%, #f4fbf5 52%, #edf7ee 100%);
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 26px 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      color: var(--leaf-dark);
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(23, 33, 27, 0.05);
+    }
+
+    .nav-links a.nav-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
+      border-color: transparent;
+      box-shadow: 0 14px 30px rgba(31, 122, 69, 0.22);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+      align-items: center;
+      gap: 48px;
+      padding: 58px 0 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      color: var(--leaf-dark);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 10px 26px rgba(23, 33, 27, 0.06);
+    }
+
+    .hero h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 21px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 950;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
+      box-shadow: 0 16px 34px rgba(31, 122, 69, 0.28);
+    }
+
+    .button-secondary {
+      color: var(--leaf-dark);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card {
+      display: grid;
+      gap: 18px;
+      padding: 26px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(237, 247, 238, 0.94)),
+        repeating-linear-gradient(90deg, transparent 0 28px, rgba(31, 122, 69, 0.05) 28px 29px);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-section {
+      position: relative;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 18px 48px rgba(23, 33, 27, 0.1);
+    }
+
+    .hero-card-section.featured {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(244, 185, 66, 0.34), transparent 16rem),
+        linear-gradient(135deg, var(--leaf), #0d4728);
+      border-color: transparent;
+    }
+
+    .hero-card-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-card-section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-card-section.featured p {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-checklist {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-checklist li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .hero-card-section.featured .hero-checklist li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-checklist span {
+      color: var(--leaf);
+      font-weight: 950;
+    }
+
+    .hero-card-section.featured .hero-checklist span {
+      color: var(--sun);
+    }
+
+    .section {
+      padding: 74px 0;
+    }
+
+    .section-title {
+      max-width: 790px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      min-height: 220px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 18px 44px rgba(23, 33, 27, 0.06);
+    }
+
+    .feature b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature small {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      color: var(--leaf-dark);
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .carousel {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+      gap: 24px;
+      align-items: stretch;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-copy {
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+      padding: 28px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(244, 185, 66, 0.38), transparent 18rem),
+        linear-gradient(145deg, var(--leaf), #0d4728);
+      border-radius: 28px;
+    }
+
+    .screen-count {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 6px 10px;
+      color: #12381f;
+      background: rgba(255, 255, 255, 0.86);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .carousel-copy h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.9rem, 3vw, 3.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .carousel-copy p {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.06rem;
+    }
+
+    .carousel-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .carousel-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .carousel-list li::before {
+      content: "";
+      display: block;
+      width: 12px;
+      height: 12px;
+      margin-top: 7px;
+      background: var(--sun);
+      border-radius: 999px;
+      box-shadow: 0 0 0 5px rgba(244, 185, 66, 0.18);
+    }
+
+    .carousel-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .carousel-button {
+      min-height: 44px;
+      padding: 0 16px;
+      color: var(--leaf-dark);
+      background: rgba(255, 255, 255, 0.92);
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 950;
+    }
+
+    .screen-frame {
+      display: grid;
+      align-content: start;
+      margin: 0;
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+    }
+
+    .screen-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .screen-image-wrap {
+      position: relative;
+      display: grid;
+      min-height: 470px;
+      place-items: center;
+      padding: 16px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(237, 247, 238, 0.72)),
+        repeating-linear-gradient(45deg, transparent 0 18px, rgba(31, 122, 69, 0.04) 18px 19px);
+    }
+
+    .screen-image-wrap img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+      border: 1px solid rgba(23, 33, 27, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 22px 58px rgba(23, 33, 27, 0.16);
+    }
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.72);
+      border-top: 1px solid var(--line);
+    }
+
+    .thumb {
+      padding: 10px 8px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .thumb.is-active {
+      color: var(--white);
+      background: var(--leaf-dark);
+      border-color: var(--leaf-dark);
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .matrix-item {
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+
+    .matrix-item b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .matrix-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+
+    .flow-step b {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .flow-step span {
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+      padding: 30px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 22px 58px rgba(23, 33, 27, 0.08);
+    }
+
+    .price-card.featured {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(244, 185, 66, 0.38), transparent 18rem),
+        linear-gradient(135deg, var(--leaf), #0d4728);
+      border-color: transparent;
+      box-shadow: 0 24px 70px rgba(16, 90, 49, 0.24);
+    }
+
+    .price-card small {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      color: var(--leaf-dark);
+      background: var(--mist);
+      border-radius: 999px;
+      font-weight: 950;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .price-card.featured small {
+      color: #12381f;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .price-card h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .price-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .price-card.featured p {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 22px 0;
+      color: var(--leaf-dark);
+    }
+
+    .price-card.featured .price {
+      color: var(--white);
+    }
+
+    .price strong {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 0.86;
+      letter-spacing: -0.08em;
+    }
+
+    .price span {
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .price-card.featured .price span {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .price-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .price-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .price-card.featured .price-list li {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .price-list span {
+      color: var(--leaf);
+      font-weight: 950;
+    }
+
+    .price-card.featured .price-list span {
+      color: var(--sun);
+    }
+
+    .price-card .button {
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    .price-card.featured .button {
+      color: var(--leaf-dark);
+      background: var(--white);
+    }
+
+    .banner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 32px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(244, 185, 66, 0.42), transparent 20rem),
+        linear-gradient(135deg, var(--leaf), #0d4728);
+      border-radius: 32px;
+      box-shadow: 0 24px 70px rgba(16, 90, 49, 0.24);
+    }
+
+    .banner h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .banner p {
+      max-width: 720px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .banner .button {
+      color: var(--leaf-dark);
+      background: var(--white);
+    }
+
+    .visit-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+    }
+
+    .visit-badge img {
+      display: block;
+      height: 20px;
+      max-width: 100%;
+    }
+
+    footer {
+      padding: 42px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .carousel,
+      .banner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .carousel-copy {
+        min-height: auto;
+      }
+
+      .grid,
+      .matrix,
+      .flow,
+      .pricing-grid,
+      .thumbs {
+        grid-template-columns: 1fr;
+      }
+
+      .screen-image-wrap {
+        min-height: auto;
+      }
+
+      .nav {
+        align-items: center;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell nav">
+    <nav class="nav-links" aria-label="Navegação">
+      <a href="http://31.97.31.91/api/public/dl/JSRDLl5t?inline=true" target="_blank" rel="noopener">Baixar banco demo</a>
+      <a href="http://31.97.31.91/api/public/dl/-EaaEtHS?inline=true" target="_blank" rel="noopener">Baixar software</a>
+      <a href="http://31.97.31.91" target="_blank" rel="noopener">Acesse nosso servidor</a>
+      <a class="nav-primary" href="https://wa.me/5553991675790?text=Ol%C3%A1,%20quero%20saber%20mais%20sobre%20o%20CNPJ%20Brazil" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produto" class="shell hero">
+      <div>
+        <span class="eyebrow">Consulta local de CNPJ, simples e rápida</span>
+        <h1>CNPJ Brazil</h1>
+        <p>
+          Um software que inicia um pequeno servidor web no próprio computador para pesquisar
+          empresas, estabelecimentos, sócios e atividades econômicas em uma base local. A tela
+          abre no navegador, mas a consulta fica offline: você escolhe o banco no computador,
+          pesquisa sem depender de internet e exporta os resultados para Excel.
+        </p>
+        <div class="cta-row">
+          <a class="button button-primary" href="https://wa.me/5553991675790?text=Ol%C3%A1,%20quero%20saber%20mais%20sobre%20o%20CNPJ%20BRAZIL%20DB%20Explorer" target="_blank" rel="noopener">
+            Falar no WhatsApp
+          </a>
+          <a class="button button-secondary" href="http://31.97.31.91/api/public/dl/JSRDLl5t?inline=true" target="_blank" rel="noopener">
+            Baixar banco demo
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Resumo do aplicativo">
+        <div class="hero-card-section featured">
+          <h2>Consulta local e offline</h2>
+          <ul class="hero-checklist">
+            <li><span>✔</span>Roda no seu próprio computador sem a necessidade de internet.</li>
+            <li><span>✔</span>Abre em qualquer navegador sem necessidade de softwares adicionais.</li>
+            <li><span>✔</span>Exporta dados de estabelecimentos, quadro societário e CNAEs.</li>
+          </ul>
+        </div>
+
+        <div class="hero-card-section">
+          <h2>Testado em</h2>
+          <ul class="hero-checklist">
+            <li><span>✔</span>Windows 10 e Windows 11.</li>
+            <li><span>✔</span>8 GB de RAM (recomendado).</li>
+            <li><span>✔</span>SSD com 60 GB livres (recomendado).</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section id="valores" class="shell section">
+      <div class="section-title">
+        <h2>Valores.</h2>
+        <p>
+          Escolha a opção mais adequada para consultar os dados no seu computador
+          ou trabalhar diretamente com planilhas prontas.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="price-card featured">
+          <small>Banco completo</small>
+          <h3>Banco de dados para uso offline</h3>
+          <p>
+            Banco de dados completo com informações de estabelecimentos e sócios,
+            preparado para ser utilizado com o CNPJ Database Explorer.
+          </p>
+          <div class="price">
+            <strong>R$ 129,00</strong>
+            <span>por mês</span>
+          </div>
+          <ul class="price-list">
+            <li><span>✔</span>Consulta rápida pelo CNPJ Database Explorer.</li>
+            <li><span>✔</span>Uso local e offline após baixar o arquivo.</li>
+            <li><span>✔</span>Dados de estabelecimentos, sócios e CNAEs.</li>
+          </ul>
+          <a class="button" href="https://wa.me/5553991675790?text=Ol%C3%A1,%20quero%20assinar%20o%20banco%20de%20dados%20completo%20do%20CNPJ%20Brazil%20por%20R%24129%2C00%20mensais" target="_blank" rel="noopener">
+            Comprar banco completo
+          </a>
+        </article>
+
+        <article class="price-card">
+          <small>Planilhas</small>
+          <h3>Planilhas de empresas ativas</h3>
+          <p>
+            Acesso a planilhas com dados de estabelecimentos e sócios, contendo
+            somente empresas ativas.
+          </p>
+          <div class="price">
+            <strong>R$ 69,00</strong>
+            <span>por mês</span>
+          </div>
+          <ul class="price-list">
+            <li><span>✔</span>Planilhas separadas por estado e município.</li>
+            <li><span>✔</span>Mais de 5 mil planilhas disponíveis.</li>
+            <li><span>✔</span>Formato prático para abrir e filtrar no Excel.</li>
+          </ul>
+          <a class="button button-primary" href="https://wa.me/5553991675790?text=Ol%C3%A1,%20quero%20assinar%20as%20planilhas%20de%20empresas%20ativas%20do%20CNPJ%20Brazil%20por%20R%2469%2C00%20mensais" target="_blank" rel="noopener">
+            Comprar planilhas
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="telas" class="shell section">
+      <div class="section-title">
+        <h2>Conheça as telas do sistema.</h2>
+        <p>
+          O fluxo foi pensado para quem precisa consultar dados no dia a dia: contadores,
+          advogados, comerciantes, analistas e equipes comerciais. Sem comandos técnicos:
+          escolha filtros, pesquise e exporte.
+        </p>
+      </div>
+
+      <div class="carousel" aria-label="Carrossel explicativo das telas">
+        <div class="carousel-copy">
+          <span class="screen-count" id="screen-count">Tela 1 de 6</span>
+          <h3 id="screen-title">Aplicativo local em execução</h3>
+          <p id="screen-description">
+            O software inicia um serviço local e mostra o endereço que será aberto
+            no navegador do próprio computador.
+          </p>
+          <ul class="carousel-list" id="screen-list">
+            <li>O navegador é usado apenas como tela do sistema.</li>
+            <li>A pesquisa acontece no banco salvo na máquina.</li>
+            <li>Ao fechar o aplicativo, o serviço local também é encerrado.</li>
+          </ul>
+          <div class="carousel-controls">
+            <button class="carousel-button" type="button" data-prev>Anterior</button>
+            <button class="carousel-button" type="button" data-next>Próxima tela</button>
+          </div>
+        </div>
+
+        <figure class="screen-frame">
+          <figcaption class="screen-toolbar">
+            <span id="screen-caption">Servidor web local</span>
+            <span>CNPJ BRAZIL DB Explorer</span>
+          </figcaption>
+          <div class="screen-image-wrap">
+            <img
+              id="screen-image"
+              src="pictures/00_prompt_tela.png"
+              alt="Tela do terminal mostrando o aplicativo local em execução"
+              width="982"
+              height="402"
+            />
+          </div>
+          <div class="thumbs" aria-label="Escolher tela do carrossel">
+            <button class="thumb is-active" type="button" data-slide="0">App local</button>
+            <button class="thumb" type="button" data-slide="1">Banco</button>
+            <button class="thumb" type="button" data-slide="2">Estabelecimentos</button>
+            <button class="thumb" type="button" data-slide="3">Sócios</button>
+            <button class="thumb" type="button" data-slide="4">Detalhe CNPJ</button>
+            <button class="thumb" type="button" data-slide="5">CNAEs</button>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="recursos" class="shell section">
+      <div class="section-title">
+        <h2>O que você consegue fazer.</h2>
+        <p>
+          O sistema reúne as pesquisas mais usadas em uma interface direta. Basta escolher
+          os filtros e clicar em pesquisar.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="feature">
+          <small>Estabelecimentos</small>
+          <b>Encontre empresas por região e atividade</b>
+          <p>
+            Pesquise por UF, cidade, situação cadastral, CNPJ, razão social, nome fantasia,
+            porte, Simples, MEI, data de abertura e CNAE.
+          </p>
+        </article>
+
+        <article class="feature">
+          <small>Sócios</small>
+          <b>Consulte quadro societário</b>
+          <p>
+            Localize sócios por empresa, nome, documento mascarado, tipo de sócio,
+            faixa etária e período de entrada na sociedade.
+          </p>
+        </article>
+
+        <article class="feature">
+          <small>CNPJ</small>
+          <b>Veja a ficha completa da empresa</b>
+          <p>
+            Digite um CNPJ básico ou completo para ver dados da empresa, estabelecimentos,
+            CNAEs e sócios organizados na tela.
+          </p>
+        </article>
+
+        <article class="feature">
+          <small>CNAEs</small>
+          <b>Pesquise atividades econômicas</b>
+          <p>
+            Busque atividades por código, parte do código, descrição ou parte da descrição.
+          </p>
+        </article>
+
+        <article class="feature">
+          <small>Excel</small>
+          <b>Exporte resultados para análise</b>
+          <p>
+            Gere planilhas com estabelecimentos, sócios e CNAEs para trabalhar no Excel
+            ou compartilhar com sua equipe.
+          </p>
+        </article>
+
+        <article class="feature">
+          <small>PDF</small>
+          <b>Gere relatório por CNPJ</b>
+          <p>
+            No detalhe por CNPJ, gere um PDF organizado para consulta, conferência
+            ou arquivamento.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell section">
+      <div class="section-title">
+        <h2>Exemplos de uso.</h2>
+        <p>
+          Algumas situações comuns em que o DB Explorer ajuda a ganhar tempo.
+        </p>
+      </div>
+
+      <div class="matrix">
+        <div class="matrix-item">
+          <b>Prospecção comercial</b>
+          <p>Encontrar empresas ativas por cidade, atividade econômica ou porte.</p>
+        </div>
+        <div class="matrix-item">
+          <b>Conferência cadastral</b>
+          <p>Consultar a situação de um CNPJ, os estabelecimentos e os sócios vinculados.</p>
+        </div>
+        <div class="matrix-item">
+          <b>Análise de mercado</b>
+          <p>Mapear quantas empresas de determinado ramo existem em uma região.</p>
+        </div>
+        <div class="matrix-item">
+          <b>Listas para atendimento</b>
+          <p>Exportar uma planilha filtrada para organizar contatos, rotas ou estudos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section">
+      <div class="section-title">
+        <h2>Da base ao resultado em poucos passos.</h2>
+        <p>
+          O objetivo é reduzir o caminho entre ter a base de CNPJ e conseguir
+          transformar os dados em informação útil.
+        </p>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <b>1. Abra o app</b>
+          <span>Execute o CNPJ BRAZIL DB Explorer no computador.</span>
+        </div>
+        <div class="flow-step">
+          <b>2. Selecione a base</b>
+          <span>Escolha o arquivo do banco de dados salvo localmente.</span>
+        </div>
+        <div class="flow-step">
+          <b>3. Faça os filtros</b>
+          <span>Combine região, situação, CNAE, nomes, sócios e datas.</span>
+        </div>
+        <div class="flow-step">
+          <b>4. Exporte</b>
+          <span>Baixe Excel ou gere PDF quando precisar documentar a consulta.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="links" class="shell section">
+      <div class="section-title">
+        <h2>Links úteis.</h2>
+        <p>
+          Acesse o servidor, baixe uma base de demonstração e obtenha o software
+          para consultar os dados localmente.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="feature">
+          <small>Dados recentes</small>
+          <b>Servidor para acesso a dados</b>
+          <p>
+            Registre um login no servidor para obter acesso a dados mais recentes
+            e arquivos disponíveis para download.
+          </p>
+          <div class="cta-row">
+            <a class="button button-secondary" href="http://31.97.31.91" target="_blank" rel="noopener">
+              Acessar servidor
+            </a>
+          </div>
+        </article>
+
+        <article class="feature">
+          <small>Demonstração</small>
+          <b>Banco de dados 2026-06</b>
+          <p>
+            Base de demonstração com dados de CNPJ que começam com 9,
+            abrangendo empresas de todo o Brasil.
+          </p>
+          <div class="cta-row">
+            <a class="button button-secondary" href="http://31.97.31.91/api/public/dl/JSRDLl5t?inline=true" target="_blank" rel="noopener">
+              Baixar banco demo
+            </a>
+          </div>
+        </article>
+
+        <article class="feature">
+          <small>Software</small>
+          <b>CNPJ Database Explorer</b>
+          <p>
+            Software para fazer consultas no banco de dados, pesquisar empresas,
+            sócios, atividades e exportar resultados.
+          </p>
+          <div class="cta-row">
+            <a class="button button-secondary" href="http://31.97.31.91/api/public/dl/-EaaEtHS?inline=true" target="_blank" rel="noopener">
+              Baixar software
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="adquirir" class="shell section">
+      <div class="banner">
+        <div>
+          <h2>Quer usar com uma base atualizada?</h2>
+          <p>
+            Fale com a CNPJ Brazil para adquirir a base, testar uma amostra
+            e receber orientação sobre o uso do DB Explorer.
+          </p>
+        </div>
+        <a class="button" href="https://wa.me/5553991675790?text=Ol%C3%A1,%20quero%20adquirir%20o%20banco%20CNPJ%20Brazil%20e%20usar%20o%20DB%20Explorer" target="_blank" rel="noopener">
+          Solicitar informações
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div>
+        <strong>CNPJ Brazil</strong>
+        <span> · Dados públicos da Receita Federal organizados para análise, prospecção e conferência.</span>
+      </div>
+      <span class="visit-badge">
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=cnpjbrazil.github.io" alt="Contador de visitas" />
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const slides = [
+      {
+        title: "Aplicativo local em execução",
+        caption: "Servidor web local",
+        image: "pictures/00_prompt_tela.png",
+        width: 982,
+        height: 402,
+        alt: "Tela do terminal mostrando o aplicativo local em execução",
+        description: "O software inicia um serviço local e mostra o endereço que será aberto no navegador do próprio computador.",
+        bullets: [
+          "O navegador é usado apenas como tela do sistema.",
+          "A pesquisa acontece no banco salvo na máquina.",
+          "Ao fechar o aplicativo, o serviço local também é encerrado."
+        ]
+      },
+      {
+        title: "Início e escolha do banco",
+        caption: "Banco de Dados",
+        image: "pictures/00_bancodados_tela.png",
+        width: 1917,
+        height: 912,
+        alt: "Tela de seleção do banco de dados",
+        description: "A primeira etapa é selecionar o arquivo do banco de dados no computador. Depois disso, o sistema libera as pesquisas.",
+        bullets: [
+          "Escolha a base local que deseja consultar.",
+          "Veja se o banco foi reconhecido corretamente.",
+          "Use a mesma tela para trocar de base quando precisar."
+        ]
+      },
+      {
+        title: "Pesquisa de estabelecimentos",
+        caption: "Pesquisa de Estabelecimentos",
+        image: "pictures/01_estabelecimentos_tela.png",
+        width: 1917,
+        height: 961,
+        alt: "Tela de pesquisa de estabelecimentos",
+        description: "Aqui você encontra empresas e unidades usando filtros simples, como cidade, UF, situação cadastral, CNAE e nome.",
+        bullets: [
+          "Filtre empresas ativas, baixadas, por cidade ou por estado.",
+          "Pesquise por razão social, nome fantasia, CNPJ ou atividade econômica.",
+          "Exporte para Excel com estabelecimentos, sócios e CNAEs relacionados."
+        ]
+      },
+      {
+        title: "Pesquisa de sócios",
+        caption: "Pesquisa de Sócios",
+        image: "pictures/02_socios_tela.png",
+        width: 1917,
+        height: 911,
+        alt: "Tela de pesquisa de sócios",
+        description: "A tela de sócios ajuda a localizar pessoas ou empresas no quadro societário, usando dados disponíveis na base.",
+        bullets: [
+          "Pesquise se determinada pessoa faz parte do quadro societário de alguma empresa.",
+          "Filtre por tipo de sócio, faixa etária e data de entrada.",
+          "Inclua os estabelecimentos vinculados quando quiser ver o contexto da empresa."
+        ]
+      },
+      {
+        title: "Detalhe por CNPJ",
+        caption: "Detalhe por CNPJ",
+        image: "pictures/03_socios_tela.png",
+        width: 1917,
+        height: 915,
+        alt: "Tela de detalhe por CNPJ",
+        description: "Digite um CNPJ básico ou completo para ver uma ficha organizada com empresa, estabelecimentos, atividades e sócios.",
+        bullets: [
+          "Mostra dados da empresa separados dos dados das filiais.",
+          "Lista CNAEs principais e secundários com descrição.",
+          "Permite gerar PDF da consulta para arquivar ou compartilhar."
+        ]
+      },
+      {
+        title: "Pesquisa de CNAEs",
+        caption: "Pesquisa de CNAEs",
+        image: "pictures/04_cnaes_tela.png",
+        width: 1917,
+        height: 912,
+        alt: "Tela de pesquisa de CNAEs",
+        description: "A busca de CNAEs facilita encontrar atividades econômicas pelo código, por parte do código ou por palavras da descrição.",
+        bullets: [
+          "Procure por termos como comércio, transporte ou combustíveis.",
+          "Use parte do código quando souber apenas o início do CNAE.",
+          "Consulte a lista completa para escolher atividades antes de filtrar empresas."
+        ]
+      }
+    ];
+
+    const title = document.querySelector("#screen-title");
+    const count = document.querySelector("#screen-count");
+    const description = document.querySelector("#screen-description");
+    const list = document.querySelector("#screen-list");
+    const image = document.querySelector("#screen-image");
+    const caption = document.querySelector("#screen-caption");
+    const thumbs = Array.from(document.querySelectorAll("[data-slide]"));
+    let activeSlide = 0;
+
+    function renderSlide(index) {
+      activeSlide = (index + slides.length) % slides.length;
+      const slide = slides[activeSlide];
+      title.textContent = slide.title;
+      count.textContent = `Tela ${activeSlide + 1} de ${slides.length}`;
+      description.textContent = slide.description;
+      caption.textContent = slide.caption;
+      image.width = slide.width;
+      image.height = slide.height;
+      image.src = slide.image;
+      image.alt = slide.alt;
+      list.innerHTML = "";
+
+      slide.bullets.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      thumbs.forEach((thumb) => {
+        thumb.classList.toggle("is-active", Number(thumb.dataset.slide) === activeSlide);
+      });
+    }
+
+    document.querySelector("[data-prev]").addEventListener("click", () => renderSlide(activeSlide - 1));
+    document.querySelector("[data-next]").addEventListener("click", () => renderSlide(activeSlide + 1));
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => renderSlide(Number(thumb.dataset.slide)));
+    });
+  </script>
+</body>
+</html>
