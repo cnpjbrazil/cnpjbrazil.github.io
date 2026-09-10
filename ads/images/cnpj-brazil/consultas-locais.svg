@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Consultas locais CNPJ Brazil</title>
+  <desc id="desc">Painel ilustrado do explorador de banco de dados CNPJ</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102c2b"/><stop offset="1" stop-color="#17633e"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8dda5"/><stop offset="1" stop-color="#e9b75f"/></linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1050" cy="80" r="250" fill="#e9b75f" opacity=".09"/><circle cx="70" cy="650" r="260" fill="#58ca81" opacity=".08"/>
+  <g transform="translate(82 94)">
+    <rect width="620" height="487" rx="28" fill="#fff" opacity=".98"/>
+    <rect width="620" height="64" rx="28" fill="#f3f4ef"/><circle cx="30" cy="32" r="7" fill="#e9b75f"/><circle cx="54" cy="32" r="7" fill="#58ca81"/><circle cx="78" cy="32" r="7" fill="#dce4de"/>
+    <rect x="35" y="101" width="205" height="26" rx="8" fill="#dce4de"/><rect x="35" y="146" width="550" height="58" rx="11" fill="#f3f4ef" stroke="#dce4de"/>
+    <rect x="35" y="229" width="550" height="190" rx="13" fill="#fff" stroke="#dce4de"/>
+    <path d="M35 274h550M35 320h550M35 366h550M183 229v190M390 229v190" stroke="#dce4de"/>
+    <rect x="456" y="443" width="129" height="26" rx="13" fill="#18804a"/>
+  </g>
+  <g transform="translate(766 150)">
+    <rect width="340" height="340" rx="58" fill="#0c2221" stroke="#ffffff" stroke-opacity=".14"/>
+    <g transform="translate(99 66)" fill="none" stroke="url(#gold)" stroke-width="14">
+      <ellipse cx="71" cy="30" rx="70" ry="29"/><path d="M1 30v54c0 16 31 29 70 29s70-13 70-29V30M1 84v54c0 16 31 29 70 29s70-13 70-29V84M1 138v54c0 16 31 29 70 29s70-13 70-29v-54"/>
+    </g>
+  </g>
+  <text x="766" y="545" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="34" font-weight="700">Consulte localmente.</text>
+  <text x="766" y="584" fill="#fff" opacity=".65" font-family="Segoe UI,Arial,sans-serif" font-size="21">Seus dados permanecem no computador.</text>
+</svg>

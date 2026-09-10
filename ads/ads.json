@@ -1,0 +1,57 @@
+[
+  {
+    "enabled": true,
+    "title": "Dados CNPJ prontos para grandes consultas",
+    "company": "CNPJ Brazil",
+    "description": "Explore bancos SQLite com dados públicos de CNPJ diretamente no seu computador, com pesquisa local e exportação para Excel e PDF.",
+    "site": "https://cnpjbrazil.github.io/",
+    "images": [
+      {
+        "src": "images/cnpj-brazil/consultas-locais.svg",
+        "description": "Ilustração do CNPJ Brazil DB Explorer executando consultas locais"
+      },
+      {
+        "src": "images/cnpj-brazil/grandes-bases.svg",
+        "description": "Ilustração de grandes bases CNPJ organizadas para pesquisa"
+      }
+    ],
+    "instagram": "",
+    "whatsapp": "+55 53 99167-5790",
+    "start_date": "2026-09-01",
+    "end_date": "2027-12-31"
+  },
+  {
+    "enabled": true,
+    "title": "Você merece uma história bem contada",
+    "company": "Salomão Filmes",
+    "description": "Produção audiovisual do interior de Minas Gerais, com direção de fotografia, fotografia still, produção, roteiros, maquiagem e direção de arte.",
+    "site": "https://salomaofilmes.com/",
+    "images": [
+      {
+        "src": "images/salomao-filmes/producao-audiovisual-com-logo.png",
+        "description": "Logo da Salomão Filmes sobre os bastidores de uma produção audiovisual"
+      }
+    ],
+    "instagram": "https://www.instagram.com/salomao.filmes/",
+    "whatsapp": "",
+    "start_date": "2026-09-10",
+    "end_date": "2027-12-31"
+  },
+  {
+    "enabled": true,
+    "title": "Banho e tosa com segurança e carinho",
+    "company": "Silva's Pets",
+    "description": "Pet shop em Betim com serviços de banho e tosa e atendimento dedicado à segurança, ao respeito e ao carinho que seu pet merece.",
+    "site": "https://www.instagram.com/silvaspetsbetim/",
+    "images": [
+      {
+        "src": "images/silvas-pets/banho-e-tosa-com-logo.png",
+        "description": "Logo da Silva's Pets ao lado de cão e gato em um ambiente moderno de banho e tosa"
+      }
+    ],
+    "instagram": "https://www.instagram.com/silvaspetsbetim/",
+    "whatsapp": "+55 31 97136-7358",
+    "start_date": "2026-09-10",
+    "end_date": "2027-12-31"
+  }
+]

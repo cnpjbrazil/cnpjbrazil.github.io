@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Grandes bases CNPJ</title><desc id="desc">Camadas de dados conectadas a resultados de pesquisa</desc>
+  <defs><linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0c2423"/><stop offset="1" stop-color="#195047"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#bg)"/><path d="M0 548C257 427 330 671 586 537s391-34 614-135v273H0z" fill="#18804a" opacity=".16"/>
+  <g transform="translate(720 95)">
+    <ellipse cx="180" cy="70" rx="178" ry="64" fill="#e9b75f"/><path d="M2 70v96c0 35 80 64 178 64s178-29 178-64V70" fill="#d8a747"/><ellipse cx="180" cy="166" rx="178" ry="64" fill="#f2c875"/>
+    <path d="M2 166v96c0 35 80 64 178 64s178-29 178-64v-96" fill="#bd8d39"/><ellipse cx="180" cy="262" rx="178" ry="64" fill="#e9b75f"/>
+    <path d="M2 262v96c0 35 80 64 178 64s178-29 178-64v-96" fill="#9f732c"/><ellipse cx="180" cy="358" rx="178" ry="64" fill="#ddb052"/>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#fff">
+    <text x="84" y="173" font-size="22" font-weight="700" letter-spacing="3" fill="#e9b75f">CNPJ BRAZIL</text>
+    <text x="84" y="241" font-size="53" font-weight="750">Grandes bases.</text><text x="84" y="303" font-size="53" font-weight="750">Respostas rápidas.</text>
+    <text x="84" y="365" font-size="23" opacity=".67">Pesquisa, relacionamentos e exportação</text><text x="84" y="398" font-size="23" opacity=".67">em uma interface feita para volumes reais.</text>
+  </g>
+  <g transform="translate(84 463)"><rect width="482" height="88" rx="18" fill="#fff" opacity=".08" stroke="#fff" stroke-opacity=".16"/><circle cx="49" cy="44" r="20" fill="#58ca81"/><path d="m40 44 7 7 13-16" fill="none" stroke="#102c2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="86" y="38" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700">Banco aberto somente para leitura</text><text x="86" y="63" fill="#fff" opacity=".58" font-family="Segoe UI,Arial,sans-serif" font-size="15">Processamento direto no seu computador</text></g>
+</svg>
